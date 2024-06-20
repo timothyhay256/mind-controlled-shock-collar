@@ -1,7 +1,7 @@
 # A mind controlled shock collar (for humans)
 ## Overview
 <p align="center">
-  <img width="300px" src="static/images/slime.png" />
+  <img width="600px" src="static/images/slime.png" />
   <br>Slimecicle getting shocked by my invention
 </p>
 
