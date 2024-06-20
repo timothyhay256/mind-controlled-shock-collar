@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Graph</title>
+    <script src="{{url_for('static', filename='scripts/chart.min.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body style="background-color: #babbf1;">
+    <canvas id="myChart" width="400" height="150"></canvas>
+    <!-- Note that the above canvas will reisze itself to fill screen, but leave some space below. -->
+    <div style="text-align:center; margin-top: 15">
+        <button style="font-size: 18px;", onclick="settingsPrompt()">
+            <i class="fa fa-solid fa-sliders"></i> Max samples to display</button>
+        <button style="font-size: 18px;", onclick="home()">
+                <i class="fa fa-solid fa-home"></i> Home</button>
+<!--        <button style="font-size: 18px;", onclick="restartHeadset()">-->
+<!--                <i class="fa fa-solid fa-rotate-right"></i> Restart headset thread</button>-->
+        <button style="font-size: 18px;", onclick="sendShock(1)">
+                <i class="fa fa-solid fa-bolt"></i> Send shock</button>
+        <button style="font-size: 18px;", onclick="sendShock(2)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Send kiloshock</button>
+        <button style="font-size: 18px;", onclick="sendShock(3)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Send megashock</button>
+        <button style="font-size: 18px;", onclick="sendShock(4)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Send gigashock <i class="fa fa-solid fa-bolt"></i></button>
+        <button style="font-size: 18px;", onclick="sendShock(5)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Send terashock <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i></button>
+        <button style="font-size: 18px;", onclick="sendShock(6)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Send petashock <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i></button>
+        <br><br>
+        <!-- <div class="dropdown">
+                <button class="dropbtn">Element to monitor</button> -->
+                <!-- TODO: Make this select -->
+                <!-- <div class="dropdown-content">
+                        <a href="#">Meditation</a>
+                        <a href="#">Attention</a>
+                </div> -->
+        <!-- </div> -->
+        <!-- <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
+
+        <form action="{{ url_for('options')}}">
+        <!-- <form method="POST" action="{{ url_for('options')}}"> -->
+                <div id="controls">
+                        &nbsp;&nbsp;&nbsp;<p id="control-text">If</p>&nbsp;
+                        <select name="type" class="select">
+                                <option value="meditation">meditation</option>
+                                <option value="attention">attention</option>
+                        </select>
+                        <select name="condition" class="select">
+                                <option value="above">goes above</option>
+                                <option value="below">goes below</option>
+                        </select>
+                        <input type="text" id="fname" name="threshold" placeholder="Threshold" style="width: 10%">
+                        &nbsp;&nbsp;<p id="control-text"> punish player.</p>&nbsp;
+                        <input type="submit" value="Submit" style="margin:4px 2px; border-radius: 8px; height: 15%">
+                </div>
+        </form>
+        <!-- <label for="fname">Threshold</label> -->
+        <div id="controls"><a href="stop"><img style="box-shadow: 10px 5px 5px rgba(0, 0, 0, .3); border-radius: 12px;" height=148px; src="{{url_for('static', filename='images/stop.png')}}"/></a>
+        <figcaption style="font-size: 19px; font-weight: bold;"></figcaption></div>
+
+    </div>
+    <script type="text/javascript">
+        var threshold = {{ data.threshold }}
+    </script>
+    <script src="{{url_for('static', filename='js/play.js')}}"></script>
+</body>
+</html>

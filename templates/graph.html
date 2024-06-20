@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Graph</title>
+    <script src="{{url_for('static', filename='scripts/chart.min.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <canvas id="myChart" width="400" height="150"></canvas>
+    <!-- Note that the above canvas will reisze itself to fill screen, but leave some space below. -->
+    <div style="text-align:center; margin-top: 15">
+        <button style="font-size: 18px;", onclick="settingsPrompt()">
+            <i class="fa fa-solid fa-sliders"></i> Max samples to display</button>
+        <button style="font-size: 18px;", onclick="home()">
+                <i class="fa fa-solid fa-home"></i> Home</button>
+    </div>
+    <script src="{{url_for('static', filename='js/graph.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Graph</title>
+    <script src="{{url_for('static', filename='scripts/chart.min.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style-opensauce.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #EB9822; font-family: Poppins, Sans-serif; font-weight: 700;">
+    <canvas id="myChart" width="400" height="150"></canvas>
+    <!-- Note that the above canvas will reisze itself to fill screen, but leave some space below. -->
+    <div style="text-align:center; margin-top: 15">
+        <button style="font-size: 18px;", onclick="settingsPrompt()">
+            <i class="fa fa-solid fa-sliders"></i> Max samples to display</button>
+        <button style="font-size: 18px;", onclick="home()">
+                <i class="fa fa-solid fa-home"></i> Home</button>
+                <br><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 50px; margin-top: 30px;">!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.<path d="M243.6 91.6L323.7 138.4C326.6 140 326.7 144.6 323.7 146.2L228.5 201.9C225.6 203.6 222.2 203.4 219.5 201.9L124.4 146.2C121.4 144.6 121.4 140 124.4 138.4L204.4 91.6V0L0 119.4V358.3L78.4 312.5V218.9C78.3 215.6 82.2 213.2 85.1 215L180.3 270.6C183.2 272.3 184.8 275.3 184.8 278.5V389.7C184.8 393 181 395.4 178.1 393.6L98 346.8L19.6 392.6L224 512L428.4 392.6L350 346.8L269.9 393.6C267.1 395.3 263.1 393.1 263.2 389.7V278.5C263.2 275.1 265.1 272.2 267.7 270.6L362.9 215C365.7 213.2 369.7 215.5 369.6 218.9V312.5L448 358.3V119.4L243.6 0V91.6z"/></svg><p id="control-text"> UNITY CONNECTED</p>
+<!--        <button style="font-size: 18px;", onclick="restartHeadset()">-->
+<!--                <i class="fa fa-solid fa-rotate-right"></i> Restart headset thread</button>-->
+        <!-- <button style="font-size: 18px;", onclick="sendShock(10)">
+                <i class="fa fa-solid fa-bolt"></i> Level 10 shock</button>
+        <button style="font-size: 18px;", onclick="sendShock(20)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Level 20 shock</button>
+        <button style="font-size: 18px;", onclick="sendShock(30)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Level 30 shock</button>
+        <button style="font-size: 18px;", onclick="sendShock(40)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Level 40 shock <i class="fa fa-solid fa-bolt"></i></button>
+        <button style="font-size: 18px;", onclick="sendShock(50)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Level 50 shock <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i></button>
+        <button style="font-size: 18px;", onclick="sendShock(60)">
+                <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i> Level 60 shock <i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i><i class="fa fa-solid fa-bolt"></i></button> -->
+        <!-- <form name="sendShock" id="sendShock" style="display: inline" action="{{ url_for ('shock') }}">
+                <input type="text" id="power" name="power" placeholder="Level" style="width: 10%">
+                <input type="submit" value="Send test shock" style="margin:4px 2px; border-radius: 8px; height: 15%">
+        </form> -->
+        <!-- <br><br> -->
+        <!-- <div class="dropdown">
+                <button class="dropbtn">Element to monitor</button> -->
+                <!-- TODO: Make this select -->
+                <!-- <div class="dropdown-content">
+                        <a href="#">Meditation</a>
+                        <a href="#">Attention</a>
+                </div> -->
+        <!-- </div> -->
+        <!-- <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe> -->
+
+        <form action="{{ url_for('options')}}">
+        <!-- <form method="POST" action="{{ url_for('options')}}"> -->
+                <div id="controls">
+                        &nbsp;&nbsp;&nbsp;<p id="control-text">IF </p>&nbsp;
+                        <select name="type" class="select">
+                                <option value="meditation">meditation</option>
+                                <option value="attention">attention</option>
+                        </select>
+                        <select name="condition" class="select">
+                                <option value="above">goes above</option>
+                                <option value="below">goes below</option>
+                        </select>
+                        <input type="text" id="fname" name="threshold" placeholder="Threshold" style="width: 10%">
+                        &nbsp;&nbsp;<p id="control-text">  "PUNISH" PLAYER WITH A  </p>&nbsp;
+                        <select name="punishment" class="select">
+                                <option value="2">beep!</option>
+                                <option value="3">buzz!</option>
+                                <option value="4">zap!</option>
+                        </select>
+                        <input type="submit" value="Submit" style="margin:4px 2px; border-radius: 8px; height: 15%">
+                </div>
+        </form>
+        <!-- <label for="fname">Threshold</label> -->
+        <!-- <div id="controls"><a href="stop"><img style="box-shadow: 10px 5px 5px rgba(0, 0, 0, .3); border-radius: 12px;" height=148px; src="{{url_for('static', filename='images/stop.png')}}"/></a> -->
+        <!-- <figcaption style="font-size: 19px; font-weight: bold;"></figcaption></div> -->
+        <!-- <br><div id="notice-text">NOTE: Shock is disabled in Open Sauce mode (because they won't let me shock <br>you guys, something about insurance and liability...) so enjoy the lights instead!</div> -->
+        <p style="font-family: Poppins, Helvetica, sans-serif; color: #f1fa8c; bottom: 0;">Made by James Hoffman</p>
+        </div>
+    <script type="text/javascript">
+        var threshold = {{ data.threshold }}
+    </script>
+    <script src="{{url_for('static', filename='js/open-sussy.js')}}"></script>
+</body>
+</html>
