@@ -2,7 +2,7 @@
 ## Overview
 <p align="center">
   <img width="600px" src="static/images/slime.png" />
-  <br>Slimecicle getting shocked by my invention
+  <br>"The Machine That Electrocutes You As Soon As You Relax" - Charlie Slimecicle
 </p>
 
 This is the repo with all the code I used to make a mind controlled shock collar that got me accepted to exhibit at [Open Sauce!](https://opensauce.com)  
